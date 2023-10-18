@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{163D4A36-190D-4E5A-90DE-7128456DE8C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LaEquina.Windows</RootNamespace>
+    <AssemblyName>LaEquina.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmCanchas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCanchas.Designer.cs">
+      <DependentUpon>FrmCanchas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCanchasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCanchasAE.Designer.cs">
+      <DependentUpon>FrmCanchasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategorias.Designer.cs">
+      <DependentUpon>FrmCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategoriasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategoriasAE.Designer.cs">
+      <DependentUpon>FrmCategoriasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCuotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCuotas.Designer.cs">
+      <DependentUpon>FrmCuotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCuotasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCuotasAE.Designer.cs">
+      <DependentUpon>FrmCuotasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFechas.Designer.cs">
+      <DependentUpon>FrmFechas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEquipos.Designer.cs">
+      <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEquiposAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEquiposAE.Designer.cs">
+      <DependentUpon>FrmEquiposAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFechaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFechaAE.Designer.cs">
+      <DependentUpon>FrmFechaAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMiembros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMiembros.Designer.cs">
+      <DependentUpon>FrmMiembros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPartidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPartidos.Designer.cs">
+      <DependentUpon>FrmPartidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReserva.Designer.cs">
+      <DependentUpon>FrmReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRondas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRondas.Designer.cs">
+      <DependentUpon>FrmRondas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRondasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRondasAE.Designer.cs">
+      <DependentUpon>FrmRondasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTorneo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTorneo.Designer.cs">
+      <DependentUpon>FrmTorneo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTurnoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTurnoAE.Designer.cs">
+      <DependentUpon>FrmTurnoAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\GridHelper.cs" />
+    <Compile Include="Helper\FromHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FrmTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTurno.Designer.cs">
+      <DependentUpon>FrmTurno.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmCanchas.resx">
+      <DependentUpon>FrmCanchas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCanchasAE.resx">
+      <DependentUpon>FrmCanchasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategorias.resx">
+      <DependentUpon>FrmCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategoriasAE.resx">
+      <DependentUpon>FrmCategoriasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCuotas.resx">
+      <DependentUpon>FrmCuotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCuotasAE.resx">
+      <DependentUpon>FrmCuotasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFechas.resx">
+      <DependentUpon>FrmFechas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEquipos.resx">
+      <DependentUpon>FrmEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEquiposAE.resx">
+      <DependentUpon>FrmEquiposAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFechaAE.resx">
+      <DependentUpon>FrmFechaAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMiembros.resx">
+      <DependentUpon>FrmMiembros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPartidos.resx">
+      <DependentUpon>FrmPartidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReserva.resx">
+      <DependentUpon>FrmReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRondas.resx">
+      <DependentUpon>FrmRondas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRondasAE.resx">
+      <DependentUpon>FrmRondasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTorneo.resx">
+      <DependentUpon>FrmTorneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTurno.resx">
+      <DependentUpon>FrmTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTurnoAE.resx">
+      <DependentUpon>FrmTurnoAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LaEsquina.Entidades\LaEsquina.Entidades.csproj">
+      <Project>{9135f691-7267-424f-8b20-2bb30eb74328}</Project>
+      <Name>LaEsquina.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LaEsquina.servicios\LaEsquina.servicios.csproj">
+      <Project>{4fbe9478-5005-49a3-99c3-91e16df4fb61}</Project>
+      <Name>LaEsquina.servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
