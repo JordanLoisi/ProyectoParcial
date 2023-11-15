@@ -15,5 +15,7 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Equipos> GetEquipos();
         List<Equipos> GetEquiposPorPagina(int cantidad, int pagina);
+        Equipos GetEquiposPorId(int idEquipos);
+        List<Equipos> GetEquiposCombo();
     }
 }

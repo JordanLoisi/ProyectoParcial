@@ -14,6 +14,7 @@ namespace LaEsquina.comun.Interfaces
         void Editar(Turno turno);
         bool Existe(Turno turno);
 
+         Turno GetTurnoPorId(int IdTurno);
         int GetCantidad();
         List<Turno> GetTurno();
         List<Turno> GetTurnoPorPagina(int cantidad, int pagina);

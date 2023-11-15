@@ -36,11 +36,15 @@
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColEquipoA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEquipoB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRondas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTorneo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColResultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
@@ -69,97 +73,102 @@
             this.tsbBuscar,
             this.tsbActualizar,
             this.toolStripSeparator2,
-            this.tsbImprimir,
             this.toolStripSeparator3,
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 57);
             this.toolStrip1.TabIndex = 16;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tsbNuevo
             // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::LaEquina.Windows.Properties.Resources.NewPichon;
             this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(46, 22);
+            this.tsbNuevo.Size = new System.Drawing.Size(54, 54);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbBorrar
             // 
+            this.tsbBorrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBorrar.Image = global::LaEquina.Windows.Properties.Resources.BorrarPichon;
             this.tsbBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBorrar.Name = "tsbBorrar";
-            this.tsbBorrar.Size = new System.Drawing.Size(43, 22);
+            this.tsbBorrar.Size = new System.Drawing.Size(54, 54);
             this.tsbBorrar.Text = "Borrar";
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbBorrar.Click += new System.EventHandler(this.tsbBorrar_Click);
             // 
             // tsbEditar
             // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = global::LaEquina.Windows.Properties.Resources.Edit;
             this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(41, 22);
+            this.tsbEditar.Size = new System.Drawing.Size(54, 54);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 57);
             // 
             // tsbBuscar
             // 
             this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(46, 22);
+            this.tsbBuscar.Size = new System.Drawing.Size(46, 54);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsbActualizar
             // 
+            this.tsbActualizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbActualizar.Image = global::LaEquina.Windows.Properties.Resources.ActualizarPichon;
             this.tsbActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbActualizar.Name = "tsbActualizar";
-            this.tsbActualizar.Size = new System.Drawing.Size(63, 22);
+            this.tsbActualizar.Size = new System.Drawing.Size(54, 54);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(57, 22);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 57);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 57);
             // 
             // tsbCerrar
             // 
+            this.tsbCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCerrar.Image = global::LaEquina.Windows.Properties.Resources.Close_Window;
             this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCerrar.Name = "tsbCerrar";
-            this.tsbCerrar.Size = new System.Drawing.Size(43, 22);
+            this.tsbCerrar.Size = new System.Drawing.Size(54, 54);
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 57);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -179,8 +188,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.lblRegistros);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 425);
-            this.splitContainer1.SplitterDistance = 326;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 393);
+            this.splitContainer1.SplitterDistance = 301;
             this.splitContainer1.TabIndex = 17;
             // 
             // dataGridView1
@@ -188,15 +197,57 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColEquipoA,
+            this.ColEquipoB,
+            this.ColRondas,
+            this.ColTorneo,
+            this.ColResultado});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 326);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 301);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ColEquipoA
+            // 
+            this.ColEquipoA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColEquipoA.HeaderText = "NombreEquipoA";
+            this.ColEquipoA.Name = "ColEquipoA";
+            this.ColEquipoA.ReadOnly = true;
+            // 
+            // ColEquipoB
+            // 
+            this.ColEquipoB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColEquipoB.HeaderText = "NombreEquipoB";
+            this.ColEquipoB.Name = "ColEquipoB";
+            this.ColEquipoB.ReadOnly = true;
+            // 
+            // ColRondas
+            // 
+            this.ColRondas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColRondas.HeaderText = "Rondas";
+            this.ColRondas.Name = "ColRondas";
+            this.ColRondas.ReadOnly = true;
+            // 
+            // ColTorneo
+            // 
+            this.ColTorneo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColTorneo.HeaderText = "NombreCategoria";
+            this.ColTorneo.Name = "ColTorneo";
+            this.ColTorneo.ReadOnly = true;
+            // 
+            // ColResultado
+            // 
+            this.ColResultado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColResultado.HeaderText = "Resultado";
+            this.ColResultado.Name = "ColResultado";
+            this.ColResultado.ReadOnly = true;
             // 
             // btnUltimo
             // 
+            this.btnUltimo.Image = global::LaEquina.Windows.Properties.Resources.Last;
             this.btnUltimo.Location = new System.Drawing.Point(604, 28);
             this.btnUltimo.Name = "btnUltimo";
             this.btnUltimo.Size = new System.Drawing.Size(75, 32);
@@ -205,6 +256,7 @@
             // 
             // btnSiguiente
             // 
+            this.btnSiguiente.Image = global::LaEquina.Windows.Properties.Resources.Next_page;
             this.btnSiguiente.Location = new System.Drawing.Point(523, 28);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
@@ -213,6 +265,7 @@
             // 
             // btnAnterior
             // 
+            this.btnAnterior.Image = global::LaEquina.Windows.Properties.Resources.Prev;
             this.btnAnterior.Location = new System.Drawing.Point(442, 28);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 32);
@@ -221,6 +274,7 @@
             // 
             // btnPrimero
             // 
+            this.btnPrimero.Image = global::LaEquina.Windows.Properties.Resources.Previous;
             this.btnPrimero.Location = new System.Drawing.Point(361, 28);
             this.btnPrimero.Name = "btnPrimero";
             this.btnPrimero.Size = new System.Drawing.Size(75, 32);
@@ -294,6 +348,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmPartidos";
             this.Text = "FrmPartidos";
+            this.Load += new System.EventHandler(this.FrmPartidos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -317,7 +372,6 @@
         private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -332,5 +386,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEquipoA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColEquipoB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColRondas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTorneo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColResultado;
     }
 }

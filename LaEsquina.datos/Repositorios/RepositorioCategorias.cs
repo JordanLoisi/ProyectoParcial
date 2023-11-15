@@ -86,13 +86,26 @@ namespace LaEsquina.datos.Repositorios
             return cantidad;
         }
 
+        public Categorias GetCategoriaPorId(int categoriaId)
+        {
+            Categorias categorias = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdCategoria, NombreCategoria
+                    FROM Categorias WHERE IdCategoria=@CategoriaId";
+                categorias = conn.QuerySingleOrDefault<Categorias>(selectQuery,
+                    new { CategoriaId= categoriaId });
+            }
+            return categorias;
+        }
+
         public List<Categorias> GetCategorias()
         {
             List<Categorias> lista = new List<Categorias>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string selectQuery = @"SELECT IdCategoria, NombreCategoria
-                         FROM Categoria ORDER BY NombreCategoria";
+                         FROM Categorias ORDER BY NombreCategoria";
                 lista = conn.Query<Categorias>(selectQuery).ToList();
             }
             return lista;

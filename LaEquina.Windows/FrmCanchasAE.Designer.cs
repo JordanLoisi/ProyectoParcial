@@ -29,35 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
             this.txtNombreCanchas = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(362, 133);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 49);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(68, 133);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 49);
-            this.btnOk.TabIndex = 6;
-            this.btnOk.Text = "OK";
-            this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // txtNombreCanchas
             // 
@@ -79,6 +57,31 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::LaEquina.Windows.Properties.Resources.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(362, 133);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(77, 71);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Image = global::LaEquina.Windows.Properties.Resources.Ok;
+            this.btnOk.Location = new System.Drawing.Point(68, 133);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnOk.Size = new System.Drawing.Size(88, 71);
+            this.btnOk.TabIndex = 6;
+            this.btnOk.Text = "OK";
+            this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // FrmCanchasAE
             // 

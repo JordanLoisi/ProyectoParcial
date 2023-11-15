@@ -86,6 +86,19 @@ namespace LaEsquina.datos.Repositorios
             return cantidad;
         }
 
+        public Rondas GetReservaPorId(int IdRondas)
+        {
+            Rondas rondas = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT NombreDeRondas
+                    FROM Rondas WHERE IdRondas=@IdRondas";
+                rondas = conn.QuerySingleOrDefault<Rondas>(selectQuery,
+                    new { idRondas = IdRondas });
+            }
+            return rondas;
+        }
+
         public List<Rondas> GetRondas()
         {
             List<Rondas> lista = new List<Rondas>();
@@ -94,6 +107,19 @@ namespace LaEsquina.datos.Repositorios
                 string selectQuery = @"SELECT IdRondas, NombreDeRondas
                          FROM Rondas ORDER BY NombreDeRondas";
                 lista = conn.Query<Rondas>(selectQuery).ToList();
+            }
+            return lista;
+        }
+
+        public List<Rondas> GetRondasCombo()
+        {
+            List<Rondas> lista;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdRondas, NombreDeRondas FROM Rondas
+                         ORDER BY NombreDeRondas";
+                lista = conn.Query<Rondas>(selectQuery).ToList();
+
             }
             return lista;
         }

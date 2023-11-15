@@ -112,11 +112,23 @@
     <Compile Include="FrmMiembros.Designer.cs">
       <DependentUpon>FrmMiembros.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMiembrosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMiembrosAE.Designer.cs">
+      <DependentUpon>FrmMiembrosAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPartidos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPartidos.Designer.cs">
       <DependentUpon>FrmPartidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPartidosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPartidosAE.Designer.cs">
+      <DependentUpon>FrmPartidosAE.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -129,6 +141,12 @@
     </Compile>
     <Compile Include="FrmReserva.Designer.cs">
       <DependentUpon>FrmReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReservaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReservaAE.Designer.cs">
+      <DependentUpon>FrmReservaAE.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRondas.cs">
       <SubType>Form</SubType>
@@ -148,12 +166,19 @@
     <Compile Include="FrmTorneo.Designer.cs">
       <DependentUpon>FrmTorneo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTorneoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTorneoAE.Designer.cs">
+      <DependentUpon>FrmTorneoAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTurnoAE.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTurnoAE.Designer.cs">
       <DependentUpon>FrmTurnoAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ComboHelpers.cs" />
     <Compile Include="Helper\GridHelper.cs" />
     <Compile Include="Helper\FromHelper.cs" />
     <Compile Include="Program.cs" />
@@ -197,14 +222,23 @@
     <EmbeddedResource Include="FrmMiembros.resx">
       <DependentUpon>FrmMiembros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMiembrosAE.resx">
+      <DependentUpon>FrmMiembrosAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPartidos.resx">
       <DependentUpon>FrmPartidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPartidosAE.resx">
+      <DependentUpon>FrmPartidosAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReserva.resx">
       <DependentUpon>FrmReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReservaAE.resx">
+      <DependentUpon>FrmReservaAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRondas.resx">
       <DependentUpon>FrmRondas.cs</DependentUpon>
@@ -214,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTorneo.resx">
       <DependentUpon>FrmTorneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTorneoAE.resx">
+      <DependentUpon>FrmTorneoAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTurno.resx">
       <DependentUpon>FrmTurno.cs</DependentUpon>
@@ -256,6 +293,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewPichon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BorrarPichon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close Window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActualizarPichon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stadium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reserva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sports Teams.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Badminton Player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No Hidden Fees.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Last.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next page.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

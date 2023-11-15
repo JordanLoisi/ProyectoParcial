@@ -1,4 +1,5 @@
 ﻿using LaEsquina.Entidades;
+using LaEsquina.Entidades.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,30 @@ namespace LaEquina.Windows.Helper
                 case Turno turno:
                     r.Cells[0].Value = turno.Horario;
                     break;
-
+                case TorneoDTO torneo:
+                    r.Cells[0].Value = torneo.FechaInicio.ToShortDateString();
+                    r.Cells[1].Value = torneo.FechaFin.ToShortDateString();
+                    r.Cells[2].Value = torneo.NombreCategoria;
+                    break;
+                case MiembroDTO miembro:
+                    r.Cells[0].Value = miembro.Nombre;
+                    r.Cells[1].Value = miembro.Apellido;
+                    r.Cells[2].Value = miembro.NombreEquipos;
+                    break;
+                case ReservaDTO reserva:
+                    r.Cells[0].Value = reserva.Horario;
+                    r.Cells[1].Value = reserva.NombreCancha;
+                    r.Cells[2].Value = $"{reserva.Apellido.ToUpper()}, {reserva.NombreMiembro}";
+                    r.Cells[3].Value = reserva.Dia.ToShortDateString();
+                    break;
+                case PartidosDTO partidos:
+                    r.Cells[0].Value = partidos.NombreEquipo_A;
+                    r.Cells[1].Value = partidos.NombreEquipo_B;
+                    r.Cells[2].Value = partidos.NombreDeRondas;
+                    r.Cells[3].Value = partidos.NombreCategoria;
+                    r.Cells[4].Value = partidos.Resultado;
+                    break;
+                   
             }
             r.Tag = obj;
         }

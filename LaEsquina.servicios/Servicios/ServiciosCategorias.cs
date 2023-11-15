@@ -69,6 +69,19 @@ namespace LaEsquina.servicios.Servicios
             }
         }
 
+        public Categorias GetCategoriasPorId(int categoriaId)
+        {
+            try
+            {
+                return _repositorio.GetCategoriaPorId(categoriaId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Categorias> GetCategoriasPorPagina(int cantidad, int pagina)
         {
             try

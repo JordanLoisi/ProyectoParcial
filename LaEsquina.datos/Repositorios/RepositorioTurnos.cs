@@ -98,6 +98,32 @@ namespace LaEsquina.datos.Repositorios
             return lista;
         }
 
+        public List<Turno> GetTurnoCombo()
+        {
+            List<Turno> lista;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdTurnos, Horario FROM Turno
+                         ORDER BY Horario";
+                lista = conn.Query<Turno>(selectQuery).ToList();
+
+            }
+            return lista;
+        }
+
+        public Turno GetTurnoPorId(int IdTurno)
+        {
+            Turno turno = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdTurnos, Horario
+                    FROM Torneo WHERE IdTorneo=@IdTorneo";
+                turno = conn.QuerySingleOrDefault<Turno>(selectQuery,
+                    new { IdTurnos = IdTurno });
+            }
+            return turno;
+        }
+
         public List<Turno> GetTurnoPorPagina(int cantidad, int pagina)
         {
             List<Turno> lista = new List<Turno>();

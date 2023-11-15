@@ -68,6 +68,32 @@ namespace LaEsquina.servicios.Servicios
             }
         }
 
+        public List<Turno> GetTurnoCombo()
+        {
+            try
+            {
+                return _repositorio.GetTurnoCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Turno GetTurnoPorId(int IdTurno)
+        {
+            try
+            {
+                return _repositorio.GetTurnoPorId(IdTurno);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Turno> GetTurnoPorPagina(int cantidad, int pagina)
         {
             try

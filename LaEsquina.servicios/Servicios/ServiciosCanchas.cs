@@ -101,5 +101,32 @@ namespace LaEsquina.servicios.Servicios
                 throw;
             }
         }
+
+        public Canchas GetCanchasPorId(int IdCanchas)
+        {
+            try
+            {
+                return _repositorio.GetCanchasPorId(IdCanchas);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Canchas> GetCachasCombo()
+        {
+            try
+            {
+                return _repositorio.GetCanchasCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
+

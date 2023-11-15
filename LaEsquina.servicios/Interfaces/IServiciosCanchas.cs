@@ -15,5 +15,7 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Canchas> GetCanchas();
         List<Canchas> GetCanchasPorPagina(int cantidad, int pagina);
+        Canchas GetCanchasPorId(int IdCanchas);
+        List<Canchas> GetCachasCombo();
     }
 }

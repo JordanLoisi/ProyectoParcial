@@ -44,6 +44,10 @@
     <Compile Include="Canchas.cs" />
     <Compile Include="Categorias.cs" />
     <Compile Include="Cuotas.cs" />
+    <Compile Include="dto\MiembroDTO.cs" />
+    <Compile Include="dto\PartidosDTO.cs" />
+    <Compile Include="dto\ReservaDTO.cs" />
+    <Compile Include="dto\TorneoDTO.cs" />
     <Compile Include="Fecha.cs" />
     <Compile Include="Equipos.cs" />
     <Compile Include="Miembro.cs" />

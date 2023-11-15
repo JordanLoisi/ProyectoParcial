@@ -1,4 +1,7 @@
 ﻿using LaEquina.Windows.Helper;
+using LaEsquina.Entidades;
+using LaEsquina.Entidades.dto;
+using LaEsquina.servicios.Interfaces;
 using LaEsquina.servicios.Servicios;
 using System;
 using System.Collections;
@@ -15,181 +18,232 @@ namespace LaEquina.Windows
 {
     public partial class FrmPartidos : Form
     {
-        //public FrmPartidos()
-        //{
-        //    InitializeComponent();
-        //    _servicios = new ServiciosPartidos();
-        //}
+        private readonly IServiciosPartidos _servicio;
+        private readonly IServiciosEquipos _serviciosEquipos;
+        private readonly IServiciosRondas _serviciosRondas;
+        private readonly IServiciosTorneo _serviciosTorneo;
+        private readonly IServiciosCategorias _serviciosCategorias;
+        
+        private List<PartidosDTO> lista;
 
-        //private void FrmPartidos_Load(object sender, EventArgs e)
-        //{
-        //    RecargarGrilla();
-        //}
-        //private readonly ServiciosPartidos _servicios;
+        //Para paginación
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 12;
 
-        //int paginaActual = 1;
-        //int registros = 0;
-        //int paginas = 0;
-        //int registrosPorPagina = 12;
+        int? TorneoFiltro = null;
+        private void FrmPartidos_Load(object sender, EventArgs e)
+        {
+            RecargarGrilla();
+        }
 
-        //bool filtroOn = false;
-        //string textoFiltro = null;
+        private void RecargarGrilla()
+        {
+            try
+            {
+                registros = _servicio.GetCantidad(null);
+                paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
+            }
+            catch (Exception)
+            {
 
-       
-        //private void tsbCerrar_Click(object sender, EventArgs e)
-        //{
-        //    Close();
-        //}
+                throw;
+            }
+        }
 
-        //private void MostrarDatosEnGrilla()
-        //{
-        //    GridHelper.LimpiarGrilla(dataGridView1);
-        //    foreach (var pais in lista)
-        //    {
-        //        DataGridViewRow r = GridHelper.ConstruirFila(dataGridView1);
-        //        GridHelper.SetearFila(r, pais);
-        //        GridHelper.AgregarFila(dataGridView1, r);
-        //    }
-        //    lblRegistros.Text = registros.ToString();
-        //    lblPaginaActual.Text = paginaActual.ToString();
-        //    lblPaginas.Text = paginas.ToString();
-        //}
+        private void MostrarPaginado()
+        {
+            lista = _servicio.GetPartidosPorPagina(registrosPorPagina, paginaActual, TorneoFiltro);
+            MostrarDatosEnGrilla();
+        }
 
+        private void MostrarDatosEnGrilla()
+        {
+            GridHelper.LimpiarGrilla(dataGridView1);
+            foreach (var partidos in lista)
+            {
+                DataGridViewRow r = GridHelper.ConstruirFila(dataGridView1);
+                GridHelper.SetearFila(r, partidos);
+                GridHelper.AgregarFila(dataGridView1, r);
+            }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text = paginas.ToString();
+        }
 
-        ////private void tsbNuevo_Click(object sender, EventArgs e)
-        ////{
-        ////    frmPaisAE frm = new frmPaisAE(_servicio) { Text = "Agregar país" };
-        ////    DialogResult dr = frm.ShowDialog(this);
-        ////    RecargarGrilla();
-        ////}
+        public FrmPartidos()
+        {
+            InitializeComponent();
+            _servicio = new ServiciosPartidos();
+            _serviciosEquipos = new ServiciosEquipos();
+            _serviciosRondas = new ServiciosRondas();
+            _serviciosTorneo = new ServiciosTorneo();
+            _serviciosCategorias = new ServiciosCategorias(); 
 
-        //private void RecargarGrilla()
-        //{
-        //    try
-        //    {
-        //        //registros = _servicio.GetCantidad(null);
-        //        paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
-        //        MostrarPaginado();
-        //    }
-        //    catch (Exception)
-        //    {
+            
+            
+        }
 
-        //        throw;
-        //    }
-        //}
-
-        ////private void tsbBorrar_Click(object sender, EventArgs e)
-        ////{
-        ////    if (dataGridView1.SelectedRows.Count == 0)
-        ////    {
-        ////        return;
-        ////    }
-        ////    var r = dataGridView1.SelectedRows[0];
-        ////    Pais pais = (Pais)r.Tag;
-        ////    try
-        ////    {
-        ////        //TODO: Se debe controlar que no este relacionado
-        ////        DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
-        ////            "Confirmar",
-        ////            MessageBoxButtons.YesNo,
-        ////            MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-        ////        if (dr == DialogResult.No) { return; }
-        ////        _servicio.Borrar(pais.PaisId);
-        ////        GridHelper.QuitarFila(dataGridView1, r);
-        ////        //lblCantidad.Text = _servicio.GetCantidad().ToString();
-        ////        MessageBox.Show("Registro borrado", "Mensaje",
-        ////            MessageBoxButtons.OK, MessageBoxIcon.Information);
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-
-        ////        MessageBox.Show(ex.Message, "Error",
-        ////            MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        ////    }
-        ////}
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
 
-        ////private void tsbEditar_Click(object sender, EventArgs e)
-        ////{
-        ////    if (dataGridView1.SelectedRows.Count == 0)
-        ////    {
-        ////        return;
-        ////    }
-        ////    var r = dataGridView1.SelectedRows[0];
-        ////    Pais pais = (Pais)r.Tag;
-        ////    Pais paisCopia = (Pais)pais.Clone();
-        ////    try
-        ////    {
-        ////        frmPaisAE frm = new frmPaisAE(_servicio) { Text = "Editar País" };
-        ////        frm.SetPais(pais);
-        ////        DialogResult dr = frm.ShowDialog(this);
-        ////        if (dr == DialogResult.Cancel)
-        ////        {
-        ////            GridHelper.SetearFila(r, paisCopia);
 
-        ////            return;
-        ////        }
-        ////        pais = frm.GetPais();
-        ////        if (pais != null)
-        ////        {
-        ////            GridHelper.SetearFila(r, pais);
 
-        ////        }
-        ////        else
-        ////        {
-        ////            GridHelper.SetearFila(r, paisCopia);
 
-        ////        }
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-        ////        GridHelper.SetearFila(r, paisCopia);
-        ////        MessageBox.Show(ex.Message, "Error",
-        ////            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        
 
-        ////    }
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+        }
 
-        ////}
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+        }
 
-        //private void btnSiguiente_Click(object sender, EventArgs e)
-        //{
-        //    if (paginaActual == paginas)
-        //    {
-        //        return;
-        //    }
-        //    paginaActual++;
-        //    MostrarPaginado();
-        //}
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
 
-        //private void btnAnterior_Click(object sender, EventArgs e)
-        //{
-        //    if (paginaActual == 1)
-        //    {
-        //        return;
-        //    }
-        //    paginaActual--;
-        //    MostrarPaginado();
-        //}
+            paginaActual = paginas;
+            MostrarPaginado();
+        }
 
-        //private void btnUltimo_Click(object sender, EventArgs e)
-        //{
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
+        }
 
-        //    paginaActual = paginas;
-        //    MostrarPaginado();
-        //}
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            FrmPartidosAE frm = new FrmPartidosAE(_servicio) { Text = "Agregar Partidos" };
+            DialogResult dr = frm.ShowDialog(this);
+            RecargarGrilla();
+        }
 
-        //private void MostrarPaginado()
-        //{
-        //    //lista = _servicio.GetPaisesPorPagina(registrosPorPagina, paginaActual, textoFiltro);
-        //    MostrarDatosEnGrilla();
-        //}
+        private void tsbBorrar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dataGridView1.SelectedRows[0];
+            PartidosDTO PartidosDTO = (PartidosDTO)r.Tag;
+            try
+            {
+                //TODO: Se debe controlar que no este relacionado
+                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
+                Partidos partidos = _servicio.GetPartidosPorId(PartidosDTO.IdPartidos);
+                if (!_servicio.EstaRelacionada(partidos))
+                {
+                    _servicio.Borrar(partidos.IdPartidos);
+                    GridHelper.QuitarFila(dataGridView1, r);
+                    registros = _servicio.GetCantidad(null);
+                    paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                    lblRegistros.Text = registros.ToString();
+                    lblPaginas.Text = paginas.ToString();
+                    //lblCantidad.Text = _servicio.GetCantidad().ToString();
+                    MessageBox.Show("Registro borrado", "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //private void btnPrimero_Click(object sender, EventArgs e)
-        //{
-        //    paginaActual = 1;
-        //    MostrarPaginado();
-        //}
+                }
+                else
+                {
+                    MessageBox.Show("Torneo Relacionada!!!", "Mensaje",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dataGridView1.SelectedRows[0];
+            PartidosDTO PartidosDto = (PartidosDTO)r.Tag;
+            PartidosDTO PartidosDtoCopia = (PartidosDTO)PartidosDto.Clone();
+            //Traer el objeto Ciudad
+            Partidos partidos = _servicio.GetPartidosPorId(PartidosDto.IdPartidos);
+            try
+            {
+                FrmPartidosAE frm = new FrmPartidosAE(_servicio) { Text = "Editar Torneo" };
+                frm.SetPartidos(partidos);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    GridHelper.SetearFila(r, PartidosDtoCopia);
+
+                    return;
+                }
+                partidos = frm.GetPartidos();
+                if (partidos != null)
+                {
+                    //Crear el dto
+                    PartidosDto.NombreEquipo_A = (_serviciosEquipos.GetEquiposPorId(partidos.IdEquipo_A)).NombreEquipos;
+                    PartidosDto.IdPartidos = partidos.IdPartidos;
+                    PartidosDto.NombreEquipo_B = (_serviciosEquipos.GetEquiposPorId(partidos.IdEquipo_B)).NombreEquipos;
+                    PartidosDto.NombreDeRondas = (_serviciosRondas.GetRondasPorId(partidos.IdRondas)).NombreDeRondas;
+                    PartidosDto.NombreCategoria = _serviciosCategorias.GetCategoriasPorId((_serviciosTorneo.GetTorneoPorId(partidos.IdTorneo)).IdCategoria).NombreCategoria;
+                    PartidosDto.Resultado = partidos.Resultado.ToString();
+
+                    GridHelper.SetearFila(r, PartidosDto);
+                }
+
+
+                else
+                {
+                    //Recupero la copia del dto
+                    GridHelper.SetearFila(r, PartidosDtoCopia);
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                GridHelper.SetearFila(r, PartidosDtoCopia);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            tsbBuscar.BackColor = Color.White;
+            TorneoFiltro = null;
+            RecargarGrilla();
+        }
 
         ////private void tsbBuscar_Click(object sender, EventArgs e)
         ////{
@@ -225,14 +279,7 @@ namespace LaEquina.Windows
         ////    }
         ////}
 
-        //private void tsbActualizar_Click(object sender, EventArgs e)
-        //{
-        //    filtroOn = false;
-        //    tsbBuscar.BackColor = Color.White;
-        //    textoFiltro = null;
-        //    RecargarGrilla();
-
-        //}
+      
     }
 }
 

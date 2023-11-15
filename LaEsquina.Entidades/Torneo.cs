@@ -6,8 +6,21 @@ using System.Threading.Tasks;
 
 namespace LaEsquina.Entidades
 {
-    public class Torneo
+    public class Torneo : ICloneable
     {
+        public int IdTorneo { get; set; }
 
+        public DateTime FechaInicio { get; set; }
+
+        public DateTime FechaFin { get; set; }
+
+        public int IdCategoria { get; set; }
+
+        public Categorias categorias { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

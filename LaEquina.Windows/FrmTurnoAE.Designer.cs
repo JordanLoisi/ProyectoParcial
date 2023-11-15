@@ -39,9 +39,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(343, 169);
+            this.btnCancelar.Image = global::LaEquina.Windows.Properties.Resources.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(326, 169);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 49);
+            this.btnCancelar.Size = new System.Drawing.Size(92, 78);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -49,9 +50,10 @@
             // 
             // btnOk
             // 
+            this.btnOk.Image = global::LaEquina.Windows.Properties.Resources.Ok;
             this.btnOk.Location = new System.Drawing.Point(49, 169);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 49);
+            this.btnOk.Size = new System.Drawing.Size(93, 78);
             this.btnOk.TabIndex = 10;
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;

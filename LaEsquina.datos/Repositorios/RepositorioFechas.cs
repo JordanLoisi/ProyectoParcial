@@ -86,6 +86,19 @@ namespace LaEsquina.datos.Repositorios
             return cantidad;
         }
 
+        public Fecha GetFechaPorId(int IdFechas)
+        {
+            Fecha fecha = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdFechas, Dia
+                    FROM Fecha WHERE IdFechas=@IdFechas";
+                fecha = conn.QuerySingleOrDefault<Fecha>(selectQuery,
+                    new { IdFechas = IdFechas });
+            }
+            return fecha;
+        }
+
         public List<Fecha> GetFechas()
         {
             List<Fecha> lista = new List<Fecha>();
@@ -94,6 +107,19 @@ namespace LaEsquina.datos.Repositorios
                 string selectQuery = @"SELECT IdFechas, Dia,Torneo
                          FROM Fecha ORDER BY Dia";
                 lista = conn.Query<Fecha>(selectQuery).ToList();
+            }
+            return lista;
+        }
+
+        public List<Fecha> GetFechasCombo()
+        {
+            List<Fecha> lista;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdFechas, Dia FROM Fecha WHere Torneo=0
+                         ORDER BY Dia";
+                lista = conn.Query<Fecha>(selectQuery).ToList();
+
             }
             return lista;
         }

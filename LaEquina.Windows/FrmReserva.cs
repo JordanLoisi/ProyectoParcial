@@ -1,4 +1,7 @@
 ﻿using LaEquina.Windows.Helper;
+using LaEsquina.Entidades;
+using LaEsquina.Entidades.dto;
+using LaEsquina.servicios.Interfaces;
 using LaEsquina.servicios.Servicios;
 using System;
 using System.Collections;
@@ -15,45 +18,200 @@ namespace LaEquina.Windows
 {
     public partial class FrmReserva : Form
     {
-        //public FrmReserva()
-        //{
-        //    InitializeComponent();
-        //    _servicios=new ServiciosReserva();
-        //}
+        private readonly IServiciosReserva _servicio;
+        private readonly IServiciosTurno _serviciosTurno;
+        private readonly IServiciosCanchas _serviciosCancha;
+        private readonly IServiciosMiembros _serviciosMiembro;
+        private readonly IServiciosFechas _serviciosFecha;
+        private List<ReservaDTO> lista;
 
-        //private void FrmReserva_Load(object sender, EventArgs e)
-        //{
-        //    RecargarGrilla ();
-        //}
-        //private readonly ServiciosReserva _servicios;
+        //Para paginación
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 12;
 
-        //int paginaActual = 1;
-        //int registros = 0;
-        //int paginas = 0;
-        //int registrosPorPagina = 12;
+        int? FechaFiltro = null;
 
-        //bool filtroOn = false;
-        //string textoFiltro = null;
+        public FrmReserva()
+        {
+            InitializeComponent();
+            _servicio = new ServiciosReserva();
+            _serviciosTurno = new ServiciosTurno();
+            _serviciosCancha = new ServiciosCanchas();
+            _serviciosMiembro = new ServiciosMiembros();
+            _serviciosFecha = new ServiciosFechas();
+        }
+        private void FrmReserva_Load(object sender, EventArgs e)
+        {
+            RecargarGrilla();
+        }
 
-       
-        //private void tsbCerrar_Click(object sender, EventArgs e)
-        //{
-        //    Close();
-        //}
+        private void RecargarGrilla()
+        {
+            try
+            {
+                registros = _servicio.GetCantidad(null);
+                paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
+            }
+            catch (Exception)
+            {
 
-        //private void MostrarDatosEnGrilla()
-        //{
-        //    GridHelper.LimpiarGrilla(dataGridView1);
-        //    foreach (var pais in lista)
-        //    {
-        //        DataGridViewRow r = GridHelper.ConstruirFila(dataGridView1);
-        //        GridHelper.SetearFila(r, pais);
-        //        GridHelper.AgregarFila(dataGridView1, r);
-        //    }
-        //    lblRegistros.Text = registros.ToString();
-        //    lblPaginaActual.Text = paginaActual.ToString();
-        //    lblPaginas.Text = paginas.ToString();
-        //}
+                throw;
+            }
+        }
+
+        private void MostrarPaginado()
+        {
+            {
+                lista = _servicio.GetReservaPorPagina(registrosPorPagina, paginaActual, FechaFiltro);
+                MostrarDatosEnGrilla();
+            }
+        }
+
+        private void MostrarDatosEnGrilla()
+        {
+            GridHelper.LimpiarGrilla(dataGridView1);
+            foreach (var reserva in lista)
+            {
+                DataGridViewRow r = GridHelper.ConstruirFila(dataGridView1);
+                GridHelper.SetearFila(r, reserva);
+                GridHelper.AgregarFila(dataGridView1, r);
+            }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text = paginas.ToString();
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            FrmReservaAE frm = new FrmReservaAE(_servicio) { Text = "Agregar Reserva" };
+            DialogResult dr = frm.ShowDialog(this);
+            RecargarGrilla();
+        }
+
+        private void tsbBorrar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dataGridView1.SelectedRows[0];
+            ReservaDTO reservaDTO = (ReservaDTO)r.Tag;
+            try
+            {
+                //TODO: Se debe controlar que no este relacionado
+                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
+                Reserva reserva = _servicio.GetReservaPorId(reservaDTO.IdReservas);
+                if (!_servicio.EstaRelacionada(reserva))
+                {
+                    _servicio.Borrar(reserva.IdReserva);
+                    GridHelper.QuitarFila(dataGridView1, r);
+                    registros = _servicio.GetCantidad(null);
+                    paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                    lblRegistros.Text = registros.ToString();
+                    lblPaginas.Text = paginas.ToString();
+                    
+                    MessageBox.Show("Registro borrado", "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Torneo Relacionada!!!", "Mensaje",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dataGridView1.SelectedRows[0];
+            ReservaDTO ReservaDto = (ReservaDTO)r.Tag;
+            ReservaDTO ReservaDtoCopia = (ReservaDTO)ReservaDto.Clone();
+            //Traer el objeto Ciudad
+            Reserva reserva = _servicio.GetReservaPorId(ReservaDto.IdReservas);
+            try
+            {
+                FrmReservaAE frm = new FrmReservaAE(_servicio) { Text = "Editar Torneo" };
+                frm.SetReserva(reserva);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    GridHelper.SetearFila(r, ReservaDtoCopia);
+
+                    return;
+                }
+                reserva = frm.GetReserva();
+                if (reserva != null)
+                {
+                    //Crear el dto
+                    ReservaDto.IdReservas = reserva.IdReserva;
+                    ReservaDto.Horario = (_serviciosTurno.GetTurnoPorId(reserva.IdTurnos)).Horario;
+                    ReservaDto.NombreCancha = (_serviciosCancha.GetCanchasPorId(reserva.IdCanchas)).Nombre;
+                    ReservaDto.NombreMiembro = (_serviciosMiembro.GetMiembroPorId(reserva.IdMiembros)).Nombre;
+                    ReservaDto.Dia = (_serviciosFecha.GetFechasPorId(reserva.IdFechas)).Dia;
+
+                    GridHelper.SetearFila(r, ReservaDto);
+                }
+
+
+                else
+                {
+                    //Recupero la copia del dto
+                    GridHelper.SetearFila(r, ReservaDtoCopia);
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                GridHelper.SetearFila(r, ReservaDtoCopia);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            tsbBuscar.BackColor = Color.White;
+            FechaFiltro = null;
+            RecargarGrilla();
+        }
+
+
+
+
+
+
+
+
+
+
 
 
         ////private void tsbNuevo_Click(object sender, EventArgs e)
@@ -179,11 +337,7 @@ namespace LaEquina.Windows
         //    MostrarPaginado();
         //}
 
-        //private void MostrarPaginado()
-        //{
-        //    //lista = _servicio.GetPaisesPorPagina(registrosPorPagina, paginaActual, textoFiltro);
-        //    MostrarDatosEnGrilla();
-        //}
+
 
         //private void btnPrimero_Click(object sender, EventArgs e)
         //{

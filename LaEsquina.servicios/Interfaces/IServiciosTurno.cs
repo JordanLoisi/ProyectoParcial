@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,5 +16,7 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Turno> GetTurno();
         List<Turno> GetTurnoPorPagina(int cantidad, int pagina);
+        Turno GetTurnoPorId(int IdTurno);
+        List<Turno> GetTurnoCombo();
     }
 }

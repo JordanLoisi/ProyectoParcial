@@ -68,6 +68,33 @@ namespace LaEsquina.servicios.Servicios
             }
         }
 
+        public List<Rondas> GetRondasCombo()
+        {
+            try
+            {
+                return _repositorio.GetRondasCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Rondas GetRondasPorId(int IdRondas)
+        {
+
+            try
+            {
+                return _repositorio.GetReservaPorId(IdRondas);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Rondas> GetRondasPorPagina(int cantidad, int pagina)
         {
             try

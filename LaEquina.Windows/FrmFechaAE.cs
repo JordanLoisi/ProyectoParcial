@@ -52,6 +52,14 @@ namespace LaEquina.Windows
 
                 }
                 fecha.Dia= dateTimePicker1.Value.Date;
+                if (radioButton1.Checked)
+                {
+                    fecha.Torneo = true;
+                }
+                else
+                {
+                    fecha.Torneo = false;
+                }
 
                 try
                 {

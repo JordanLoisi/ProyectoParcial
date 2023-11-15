@@ -66,6 +66,10 @@
     <Compile Include="Servicios\ServiciosTurno.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LaEsquina.comun\LaEsquina.comun.csproj">
+      <Project>{52b25aa1-64ab-4548-b675-c793a198d6a4}</Project>
+      <Name>LaEsquina.comun</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LaEsquina.datos\LaEsquina.datos.csproj">
       <Project>{ee09b7a9-72f9-4ffb-ba23-060a244a9eca}</Project>
       <Name>LaEsquina.datos</Name>

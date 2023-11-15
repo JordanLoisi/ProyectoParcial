@@ -98,6 +98,32 @@ namespace LaEsquina.datos.Repositorios
             return lista;
         }
 
+        public List<Equipos> GetEquiposCombo()
+        {
+            List<Equipos> lista;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdEquipos, NombreEquipos FROM Equipos
+                         ORDER BY NombreEquipos";
+                lista = conn.Query<Equipos>(selectQuery).ToList();
+
+            }
+            return lista;
+        }
+
+        public Equipos GetEquiposPorId(int idEquipos)
+        {
+            Equipos equipos = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdEquipos, NombreEquipos
+                    FROM Equipos WHERE IdEquipos=@IdEquipos";
+                equipos = conn.QuerySingleOrDefault<Equipos>(selectQuery,
+                    new { IdEquipos = idEquipos });
+            }
+            return equipos;
+        }
+
         public List<Equipos> GetEquiposPorPagina(int cantidad, int pagina)
         {
             List<Equipos> lista = new List<Equipos>();

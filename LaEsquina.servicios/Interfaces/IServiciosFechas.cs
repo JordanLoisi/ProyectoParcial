@@ -15,5 +15,7 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Fecha> GetFechas();
         List<Fecha> GetFechasPorPagina(int cantidad, int pagina);
+        Fecha GetFechasPorId(int IdFechas);
+        List<Fecha> GetFechasCombo();
     }
 }

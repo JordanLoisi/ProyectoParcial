@@ -68,6 +68,32 @@ namespace LaEsquina.servicios.Servicios
             }
         }
 
+        public List<Fecha> GetFechasCombo()
+        {
+            try
+            {
+                return _repositorio.GetFechasCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Fecha GetFechasPorId(int IdFechas)
+        {
+            try
+            {
+                return _repositorio.GetFechaPorId(IdFechas);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Fecha> GetFechasPorPagina(int cantidad, int pagina)
         {
             try

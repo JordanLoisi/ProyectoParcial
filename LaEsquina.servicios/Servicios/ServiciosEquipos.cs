@@ -68,6 +68,32 @@ namespace LaEsquina.servicios.Servicios
             }
         }
 
+        public List<Equipos> GetEquiposCombo()
+        {
+            try
+            {
+                return _repositorio.GetEquiposCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Equipos GetEquiposPorId(int idEquipos)
+        {
+            try
+            {
+                return _repositorio.GetEquiposPorId(idEquipos);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Equipos> GetEquiposPorPagina(int cantidad, int pagina)
         {
             try

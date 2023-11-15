@@ -13,7 +13,8 @@ namespace LaEsquina.comun.Interfaces
         void Borrar(int IdCanchas);
         void Editar(Canchas canchas);
         bool Existe(Canchas canchas);
-        
+
+        Canchas GetCanchasPorId(int IdCanchas);
         int GetCantidad();
         List<Canchas> GetCanchas();
         List<Canchas> GetCanchasPorPagina(int cantidad, int pagina);

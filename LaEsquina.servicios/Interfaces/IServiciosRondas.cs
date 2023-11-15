@@ -15,5 +15,7 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Rondas> GetRondas();
         List<Rondas> GetRondasPorPagina(int cantidad, int pagina);
+        Rondas GetRondasPorId(int IdRondas);
+        List<Rondas> GetRondasCombo();
     }
 }

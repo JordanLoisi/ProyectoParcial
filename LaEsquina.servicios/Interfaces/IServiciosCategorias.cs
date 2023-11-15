@@ -15,5 +15,6 @@ namespace LaEsquina.servicios.Interfaces
         int GetCantidad();
         List<Categorias> GetCategorias();
         List<Categorias> GetCategoriasPorPagina(int cantidad, int pagina);
+        Categorias GetCategoriasPorId(int categoriaId);
     }
 }

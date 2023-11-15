@@ -114,5 +114,31 @@ namespace LaEsquina.datos.Repositorios
             }
             return lista;
         }
+
+        public Canchas GetCanchasPorId(int IdCanchas)
+        {
+            Canchas canchas = null;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdCanchas, Nombre
+                    FROM Canchas WHERE IdCanchas=@IdCanchas";
+                canchas = conn.QuerySingleOrDefault<Canchas>(selectQuery,
+                    new { idCanchas= IdCanchas });
+            }
+            return canchas;
+        }
+
+        public List<Canchas> GetCanchasCombo()
+        {
+            List<Canchas> lista;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT IdCanchas, Nombre FROM Canchas
+                         ORDER BY Nombre";
+                lista = conn.Query<Canchas>(selectQuery).ToList();
+
+            }
+            return lista;
+        }
     }
 }
